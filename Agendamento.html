@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Agendamento de Horários</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <header class="d-flex justify-content-center py-3 border-bottom">
+        <h1>Agendamento de Horários</h1>
+    </header>
+    <main class="container mt-4">
+        <form id="formAgendamento">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="data" class="form-label">Data do Agendamento:</label>
+                <input type="date" class="form-control" id="data" required>
+            </div>
+            <div class="mb-3">
+                <label for="hora" class="form-label">Horário:</label>
+                <input type="time" class="form-control" id="hora" required>
+            </div>
+            <!-- Botão atualizado para chamar a função de confirmação -->
+            <button type="button" class="btn btn-primary" onclick="exibirConfirmacao()">Confirmar Agendamento</button>
+        </form>
+    </main>
+    <footer class="text-center py-3">
+        <p>Salão da Mira &copy; 2025</p>
+    </footer>
+    <script>
+        function exibirConfirmacao() {
+            // Captura os valores do formulário
+            const nome = document.getElementById("nome").value;
+            const data = document.getElementById("data").value;
+            const hora = document.getElementById("hora").value;
+
+            // Verifica se todos os campos foram preenchidos
+            if (!nome || !data || !hora) {
+                alert("Por favor, preencha todos os campos antes de confirmar.");
+                return;
+            }
+
+            // Exibe os dados para confirmação
+            const mensagem = `Confirme os detalhes do agendamento:\n\nNome: ${nome}\nData: ${data}\nHorário: ${hora}`;
+            const confirmado = confirm(mensagem);
+
+            // Se confirmado, envia o formulário
+            if (confirmado) {
+                alert("Seu horário foi agendado com sucesso!");
+                document.getElementById("formAgendamento").submit();
+            }
+        }
+    </script>
+</body>
+</html>
